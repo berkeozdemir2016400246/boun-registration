@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div style="background-color:lavender; !important" class="jumbotron text-center bg-primary">
+            <h2> Grade average for {{course_id}}.</h2>
+    </div>
+<div class="container">
+        <table>
+            <colgroup>
+                <col span="1" >
+                <col span="1" >
+                <col span="1" >
+            </colgroup>
+            <tr>
+                <th class="text-left">Course ID</th>
+                <th>Course Name</th>
+                <th>Grade Average</th>
+            </tr>
+            {% for row in results %}
+            <tr>
+                {% for value in row %}
+                <td class="">
+                    {{value}}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

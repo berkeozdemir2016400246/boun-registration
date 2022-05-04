@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div style="background-color:lavender; !important" class="jumbotron text-center bg-primary">
+            <h2> Welcome back {{username}}.</h2>
+        </div>
+    </div>
+    {% if action_fail %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Post creation failed</h4>
+        <p>You exceeded your post creation limit</p>
+    </div>
+    {% endif %}
+    {% if action_success%}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading"></h4>
+            <p>Action Successful</p>
+        </div>
+    {% endif %}
+    <hr>
+    <div class="center">
+        <h3>Add Instructor</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'createInstructor' %}">
+                {%csrf_token%}
+                <br>
+                <label>UserName</label>
+                <br>
+                <input type="text" name="username" placeholder="UserName" required>
+                <br>
+                <label>Password</label>
+                <br>
+                <input type="text" name="password" placeholder="Password" required>
+                <br>
+                <label>Department ID</label>
+                <br>
+                <input type="text" name="department_id" placeholder="Department ID" required>
+                <br>
+                <label>Email</label>
+                <br>
+                <input type="text" name="email" placeholder="Email" required>
+                <br>
+                <label>Title</label>
+                <br>
+                <input type="text" name="title" placeholder="Title" required>
+                <br>
+                <label>Name</label>
+                <br>
+                 <input type="text" name="name" placeholder="Name" required>
+                <br>
+                <label>Surname</label>
+                <br>
+                <input type="text" name="surname" placeholder="Surname" required>
+                <input type="submit" name="submit" value="Add">
+                <br>
+        </form>
+    </div>
+        <hr>
+        <div class="center">
+        <h3>Add Student</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'createStudent' %}">
+                {%csrf_token%}
+                <br>
+                <label>UserName</label>
+                <br>
+                <input type="text" name="username" placeholder="UserName" required>
+                <br>
+                <label>Password</label>
+                <br>
+                <input type="text" name="password" placeholder="Password" required>
+                <br>
+                <label>Department ID</label>
+                <br>
+                <input type="text" name="department_id" placeholder="Department ID" required>
+                <br>
+                <label>Email</label>
+                <br>
+                <input type="text" name="email" placeholder="Email" required>
+                <br>
+                <label>Student ID</label>
+                <br>
+                <input type="text" name="student_id" placeholder="Student ID" required>
+                <br>
+                <label>Name</label>
+                <br>
+                 <input type="text" name="name" placeholder="Name" required>
+                <br>
+                <label>Surname</label>
+                <br>
+                <input type="text" name="surname" placeholder="Surname" required>
+                <input type="submit" name="submit" value="Add">
+                <br>
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <h3>Delete Student</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'deleteStudent' %}">
+                {%csrf_token%}
+                <br>
+                <label>Srudent ID</label>
+                <br>
+                <input type="text" name="student_id" placeholder="Student Id" required>
+                <input type="submit" name="submit" value="Add">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <h3>Change Instructor Title</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'changeInstructorTitle' %}">
+                {%csrf_token%}
+                <br>
+                <label>Instructor Username</label>
+                <br>
+                <input type="text" name="username" placeholder="Instructor Username" required>
+                <br>
+                <label>Instructor Title</label>
+                <br>
+                <input type="text" name="title" placeholder="Title" required>
+                <input type="submit" name="submit" value="Add">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <form id="postform" class="form-group" method="GET" action="{%url 'getStudents' %}">
+                {%csrf_token%}
+                <input type="submit" name="submit" value="Get Students">
+        </form>
+        <br>
+        <form id="postform" class="form-group" method="GET" action="{%url 'getInstructors' %}">
+                {%csrf_token%}
+                <input type="submit" name="submit" value="Get Instructors">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <h3>Show Student Courses</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'getStudentCourses' %}">
+                {%csrf_token%}
+                <br>
+                <label>Get Student Grades</label>
+                <input type="text" name="student_id" placeholder="Student ID" required>
+                <input type="submit" name="submit" value="Search">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <h3>Show Instructor Courses</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'getInstructorCourses' %}">
+                {%csrf_token%}
+                <br>
+                <label>Get Instructor Courses</label>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="submit" name="submit" value="Search">
+        </form>
+    </div>
+
+        <div class="center">
+        <h3>Show Course Grade Average</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'getCourseGrades' %}">
+                {%csrf_token%}
+                <br>
+                <label>Get Course Grade</label>
+                <input type="text" name="course_id" placeholder="Course ID" required>
+                <input type="submit" name="submit" value="Search">
+        </form>
+    </div>
+
+    <a href="{%url 'index' %}"> <p style="text-align:center">Logout</p></a>
+</body>
+</html>

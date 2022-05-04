@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div style="background-color:lavender; !important" class="jumbotron text-center bg-primary">
+            <h2> Welcome back {{username}}.</h2>
+        </div>
+    </div>
+    {% if action_fail %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Post creation failed</h4>
+        <p>You exceeded your post creation limit</p>
+    </div>
+    {% endif %}
+    {% if action_success%}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading"></h4>
+            <p>Action Successful</p>
+        </div>
+    {% endif %}
+    <hr>
+    <div class="center">
+        <form id="postform" class="form-group" method="POST" action="{%url 'listAllCourses' %}">
+                {%csrf_token%}
+                <input type="submit" name="submit" value="Get All Courses">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <form id="postform" class="form-group" method="POST" action="{%url 'addCourseStudent' %}">
+                {%csrf_token%}
+                <br>
+                <label>Add Course</label>
+                <input type="text" name="course_id" required>
+                <input type="submit" name="submit" value="Add">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <form id="postform" class="form-group" method="POST" action="{%url 'coursesTaken' %}">
+                {%csrf_token%}
+                <input type="submit" name="submit" value="Get Taken Courses">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <h3>Search Course Names</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'searchCourse' %}">
+                {%csrf_token%}
+                <br>
+                <label>Search Query</label>
+                <input type="text" name="course_name" required>
+                <input type="submit" name="submit" value="Add">
+        </form>
+    </div>
+    <hr>
+    <div class="center">
+        <h3>Filter Course</h3>
+        <form id="postform" class="form-group" method="POST" action="{%url 'filterCourse' %}">
+                {%csrf_token%}
+                <br>
+                <label>Department</label>
+                <input type="text" name="department_id" required>
+                <input type="submit" name="submit" value="Add">
+                <br>
+                <label>Campus</label>
+                <input type="text" name="campus" required>
+                <input type="submit" name="submit" value="Add"><br>
+                <label>Min Credit</label>
+                <input type="text" name="min_credit" required>
+                <input type="submit" name="submit" value="Add"><br>
+                <label>Max Credit</label>
+                <input type="text" name="max_credit" required>
+                <input type="submit" name="submit" value="Add">
+        </form>
+    </div>
+    <hr>
+    <a href="{%url 'index' %}"> <p style="text-align:center">Logout</p></a>
+
+</body>
+</html>
